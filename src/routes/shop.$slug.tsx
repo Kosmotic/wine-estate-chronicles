@@ -78,7 +78,7 @@ function WineDetail() {
               <div className="mt-10">
                 <p className="eyebrow">Food Pairing</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {wine.pairings.map((p) => (
+                  {wine.pairings.map((p: string) => (
                     <span key={p} className="border border-border px-4 py-2 text-sm text-foreground/80">
                       {p}
                     </span>
