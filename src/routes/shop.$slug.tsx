@@ -1,8 +1,9 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { findWine, wines } from "@/lib/wines";
 import { ArrowRight, Minus, Plus, ShoppingBag, Leaf, Award } from "lucide-react";
+import { addToCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/$slug")({
   loader: ({ params }) => {
@@ -10,18 +11,15 @@ export const Route = createFileRoute("/shop/$slug")({
     if (!wine) throw notFound();
     return { wine };
   },
-  head: ({ loaderData }) =>
-    loaderData
-      ? {
-          meta: [
-            { title: `${loaderData.wine.name} — Whinary Estate` },
-            { name: "description", content: loaderData.wine.description },
-            { property: "og:title", content: `${loaderData.wine.name} · ${loaderData.wine.varietal}` },
-            { property: "og:description", content: loaderData.wine.description },
-            { property: "og:image", content: loaderData.wine.image },
-          ],
-        }
-      : {},
+  head: ({ loaderData }) => loaderData ? {
+    meta: [
+      { title: `${loaderData.wine.name} — Whinary Estate` },
+      { name: "description", content: loaderData.wine.description },
+      { property: "og:title", content: `${loaderData.wine.name} · ${loaderData.wine.varietal}` },
+      { property: "og:description", content: loaderData.wine.description },
+      { property: "og:image", content: loaderData.wine.image },
+    ],
+  } : {},
   notFoundComponent: () => (
     <SiteLayout>
       <div className="pt-40 pb-32 text-center container-luxe">
@@ -45,7 +43,9 @@ export const Route = createFileRoute("/shop/$slug")({
 function WineDetail() {
   const { wine } = Route.useLoaderData();
   const [qty, setQty] = useState(1);
-  const related = wines.filter((w) => w.slug !== wine.slug).slice(0, 3);
+  const [added, setAdded] = useState(false);
+  const navigate = useNavigate();
+  const related = wines.filter((w) => w.slug !== wine.slug && w.type === wine.type).slice(0, 3);
 
   return (
     <SiteLayout>
@@ -53,7 +53,6 @@ function WineDetail() {
         <div className="container-luxe">
           <Link to="/shop" className="eyebrow !text-muted-foreground hover:!text-burgundy transition">← Back to wines</Link>
           <div className="mt-8 grid lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Image */}
             <div className="relative">
               <div className="sticky top-28">
                 <div className="relative aspect-[4/5] bg-secondary overflow-hidden shadow-bottle">
@@ -61,8 +60,6 @@ function WineDetail() {
                 </div>
               </div>
             </div>
-
-            {/* Details */}
             <div>
               <p className="eyebrow">{wine.varietal}</p>
               <h1 className="mt-3 font-serif text-5xl md:text-6xl">{wine.name}</h1>
@@ -79,33 +76,33 @@ function WineDetail() {
                 <p className="eyebrow">Food Pairing</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {wine.pairings.map((p: string) => (
-                    <span key={p} className="border border-border px-4 py-2 text-sm text-foreground/80">
-                      {p}
-                    </span>
+                    <span key={p} className="border border-border px-4 py-2 text-sm text-foreground/80">{p}</span>
                   ))}
                 </div>
               </div>
 
               <div className="mt-12 border-t border-border pt-8 flex flex-wrap items-end gap-6 justify-between">
                 <div>
-                  <div className="font-serif text-5xl text-burgundy">${wine.price}</div>
+                  <div className="font-serif text-5xl text-burgundy">€{wine.price}</div>
                   <p className="mt-1 text-sm text-muted-foreground">per bottle · {wine.abv}% alc.</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center border border-border">
-                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-3 hover:bg-secondary transition" aria-label="Decrease">
-                      <Minus className="h-4 w-4" />
-                    </button>
+                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-3 hover:bg-secondary transition" aria-label="Decrease"><Minus className="h-4 w-4" /></button>
                     <span className="w-10 text-center font-serif">{qty}</span>
-                    <button onClick={() => setQty(qty + 1)} className="p-3 hover:bg-secondary transition" aria-label="Increase">
-                      <Plus className="h-4 w-4" />
-                    </button>
+                    <button onClick={() => setQty(qty + 1)} className="p-3 hover:bg-secondary transition" aria-label="Increase"><Plus className="h-4 w-4" /></button>
                   </div>
-                  <button className="inline-flex h-14 items-center gap-3 bg-burgundy text-cream px-8 text-[0.72rem] uppercase tracking-[0.25em] font-medium hover:bg-burgundy-deep transition">
-                    <ShoppingBag className="h-4 w-4" /> Add to cart
+                  <button
+                    onClick={() => { addToCart(wine.slug, qty); setAdded(true); setTimeout(() => setAdded(false), 1800); }}
+                    className="inline-flex h-14 items-center gap-3 bg-burgundy text-cream px-8 text-[0.72rem] uppercase tracking-[0.25em] font-medium hover:bg-burgundy-deep transition"
+                  >
+                    <ShoppingBag className="h-4 w-4" /> {added ? "Added!" : "Add to cart"}
                   </button>
                 </div>
               </div>
+              {added && (
+                <button onClick={() => navigate({ to: "/cart" })} className="mt-4 text-burgundy underline text-sm">View cart →</button>
+              )}
 
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-2"><Leaf className="h-4 w-4 text-gold" /> Biodynamic farming</span>
@@ -122,9 +119,7 @@ function WineDetail() {
             <p className="eyebrow">Producer Story</p>
             <h2 className="mt-3 font-serif text-4xl">{wine.region}</h2>
           </div>
-          <p className="md:col-span-7 text-lg text-muted-foreground leading-relaxed">
-            {wine.description}
-          </p>
+          <p className="md:col-span-7 text-lg text-muted-foreground leading-relaxed">{wine.description}</p>
         </div>
       </section>
 
@@ -132,9 +127,7 @@ function WineDetail() {
         <div className="container-luxe">
           <div className="flex justify-between items-end mb-12">
             <h2 className="font-serif text-4xl md:text-5xl">You may also like</h2>
-            <Link to="/shop" className="inline-flex items-center gap-2 text-burgundy hover:gap-4 transition-all">
-              All wines <ArrowRight className="h-4 w-4" />
-            </Link>
+            <Link to="/shop" className="inline-flex items-center gap-2 text-burgundy hover:gap-4 transition-all">All wines <ArrowRight className="h-4 w-4" /></Link>
           </div>
           <div className="grid sm:grid-cols-3 gap-7">
             {related.map((w) => (
@@ -143,7 +136,7 @@ function WineDetail() {
                   <img src={w.image} alt={w.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
                 </div>
                 <h3 className="mt-4 font-serif text-xl group-hover:text-burgundy transition">{w.name}</h3>
-                <p className="text-sm text-muted-foreground">${w.price}</p>
+                <p className="text-sm text-muted-foreground">€{w.price}</p>
               </Link>
             ))}
           </div>

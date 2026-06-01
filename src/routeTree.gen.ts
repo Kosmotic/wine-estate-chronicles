@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WineClubRouteImport } from './routes/wine-club'
 import { Route as VisitRouteImport } from './routes/visit'
-import { Route as JournalRouteImport } from './routes/journal'
+import { Route as ProducersRouteImport } from './routes/producers'
 import { Route as GiftingRouteImport } from './routes/gifting'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
@@ -29,9 +31,9 @@ const VisitRoute = VisitRouteImport.update({
   path: '/visit',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
+const ProducersRoute = ProducersRouteImport.update({
+  id: '/producers',
+  path: '/producers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GiftingRoute = GiftingRouteImport.update({
@@ -42,6 +44,16 @@ const GiftingRoute = GiftingRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -68,9 +80,11 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/gifting': typeof GiftingRoute
-  '/journal': typeof JournalRoute
+  '/producers': typeof ProducersRoute
   '/visit': typeof VisitRoute
   '/wine-club': typeof WineClubRoute
   '/shop/$slug': typeof ShopSlugRoute
@@ -79,9 +93,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/gifting': typeof GiftingRoute
-  '/journal': typeof JournalRoute
+  '/producers': typeof ProducersRoute
   '/visit': typeof VisitRoute
   '/wine-club': typeof WineClubRoute
   '/shop/$slug': typeof ShopSlugRoute
@@ -91,9 +107,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/gifting': typeof GiftingRoute
-  '/journal': typeof JournalRoute
+  '/producers': typeof ProducersRoute
   '/visit': typeof VisitRoute
   '/wine-club': typeof WineClubRoute
   '/shop/$slug': typeof ShopSlugRoute
@@ -104,9 +122,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/cart'
+    | '/checkout'
     | '/contact'
     | '/gifting'
-    | '/journal'
+    | '/producers'
     | '/visit'
     | '/wine-club'
     | '/shop/$slug'
@@ -115,9 +135,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/cart'
+    | '/checkout'
     | '/contact'
     | '/gifting'
-    | '/journal'
+    | '/producers'
     | '/visit'
     | '/wine-club'
     | '/shop/$slug'
@@ -126,9 +148,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/cart'
+    | '/checkout'
     | '/contact'
     | '/gifting'
-    | '/journal'
+    | '/producers'
     | '/visit'
     | '/wine-club'
     | '/shop/$slug'
@@ -138,9 +162,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   GiftingRoute: typeof GiftingRoute
-  JournalRoute: typeof JournalRoute
+  ProducersRoute: typeof ProducersRoute
   VisitRoute: typeof VisitRoute
   WineClubRoute: typeof WineClubRoute
   ShopSlugRoute: typeof ShopSlugRoute
@@ -163,11 +189,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisitRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
+    '/producers': {
+      id: '/producers'
+      path: '/producers'
+      fullPath: '/producers'
+      preLoaderRoute: typeof ProducersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gifting': {
@@ -182,6 +208,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -218,9 +258,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   GiftingRoute: GiftingRoute,
-  JournalRoute: JournalRoute,
+  ProducersRoute: ProducersRoute,
   VisitRoute: VisitRoute,
   WineClubRoute: WineClubRoute,
   ShopSlugRoute: ShopSlugRoute,
