@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageBanner, SiteLayout } from "@/components/site/SiteLayout";
 import { Sparkles, Check } from "lucide-react";
-import bannerCellar from "@/assets/brand/banner-cellar.jpg";
+import bannerWineClub from "@/assets/brand/banner-wineclub.jpg";
 import { wines } from "@/lib/wines";
 
 export const Route = createFileRoute("/wine-club")({
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/wine-club")({
       { name: "description", content: "Join the Whinary Wine Club. Hand-picked allocations delivered to your door every two months." },
       { property: "og:title", content: "Whinary Wine Club" },
       { property: "og:description", content: "Hand-picked wines delivered to your door." },
-      { property: "og:image", content: bannerCellar },
+      { property: "og:image", content: bannerWineClub },
     ],
   }),
   component: WineClub,
@@ -26,7 +26,7 @@ const tiers = [
 function WineClub() {
   return (
     <SiteLayout transparentHeader>
-      <PageBanner eyebrow="The Wine Club" title="A standing invitation to our cellar." subtitle="Three tiers, all with the same care. Pause or cancel anytime." image={bannerCellar} tall />
+      <PageBanner eyebrow="The Wine Club" title="A standing invitation to our cellar." subtitle="Three tiers, all with the same care. Pause or cancel anytime." image={bannerWineClub} tall />
 
       {/* Tiers */}
       <section className="py-24">
@@ -34,17 +34,17 @@ function WineClub() {
           {tiers.map((t, i) => (
             <div
               key={t.name}
-              className={`relative overflow-hidden p-10 hover-lift transition-all reveal-up ${
+              className={`group relative overflow-hidden p-10 transition-all duration-500 reveal-up cursor-pointer hover:-translate-y-2 hover:shadow-bottle ${
                 t.featured
-                  ? "bg-gradient-dark text-cream shadow-bottle"
-                  : "bg-card border border-border text-foreground"
+                  ? "bg-gradient-dark text-cream shadow-bottle ring-2 ring-gold/60 hover:ring-gold"
+                  : "bg-card border border-border text-foreground hover:border-burgundy hover:ring-2 hover:ring-burgundy/40"
               }`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {t.featured && (
                 <>
                   <div className="grain absolute inset-0 opacity-50" />
-                  <span className="absolute -top-0 right-0 bg-gradient-gold text-burgundy-deep text-[0.65rem] tracking-[0.22em] uppercase px-4 py-2 font-medium">Most loved</span>
+                  <span className="absolute top-0 right-0 bg-gradient-gold text-burgundy-deep text-[0.65rem] tracking-[0.22em] uppercase px-4 py-2 font-medium">Most loved</span>
                 </>
               )}
               <div className="relative">
@@ -56,9 +56,13 @@ function WineClub() {
                     <li key={p} className="flex items-start gap-3"><Check className="h-4 w-4 text-gold mt-0.5 shrink-0" />{p}</li>
                   ))}
                 </ul>
-                <button className={`mt-10 w-full py-4 text-[0.72rem] uppercase tracking-[0.25em] font-medium transition ${t.featured ? "bg-gradient-gold text-burgundy-deep hover:opacity-90" : "bg-burgundy text-cream hover:bg-burgundy-deep"}`}>
+                <Link
+                  to="/contact"
+                  search={{ tier: t.name } as never}
+                  className={`mt-10 w-full block text-center py-4 text-[0.72rem] uppercase tracking-[0.25em] font-medium transition ${t.featured ? "bg-gradient-gold text-burgundy-deep hover:opacity-90" : "bg-burgundy text-cream hover:bg-burgundy-deep"}`}
+                >
                   Join {t.name}
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -104,7 +108,7 @@ function WineClub() {
               </div>
             ))}
           </div>
-          <Link to="/contact" className="mt-14 inline-block text-burgundy border-b border-burgundy pb-1 hover:gap-5">Questions? Talk to a sommelier →</Link>
+          <Link to="/contact" className="mt-14 inline-block text-burgundy border-b border-burgundy pb-1">Questions? Talk to a sommelier →</Link>
         </div>
       </section>
     </SiteLayout>
