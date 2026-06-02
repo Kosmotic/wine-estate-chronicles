@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageBanner, SiteLayout } from "@/components/site/SiteLayout";
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
-import banner from "@/assets/brand/banner-vineyards.jpg";
+import banner from "@/assets/brand/contact-office.jpg";
 
 const EMAIL = "contact@whinarywines.com";
 

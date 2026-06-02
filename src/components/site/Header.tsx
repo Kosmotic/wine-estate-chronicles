@@ -32,7 +32,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        solid ? "bg-cream/85 backdrop-blur-xl border-b border-border/60" : "bg-transparent"
+        solid ? "bg-cream/90 backdrop-blur-xl border-b border-border/60" : "bg-gradient-to-b from-burgundy-deep/55 via-burgundy-deep/25 to-transparent"
       }`}
     >
       <div className="container-luxe flex h-20 items-center justify-between gap-6">

@@ -84,9 +84,10 @@ function ShopPage() {
             </div>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-x-7 gap-y-12">
               {filtered.map((w) => (
-                <Link key={w.slug} to="/shop/$slug" params={{ slug: w.slug }} className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-                    <img src={w.image} alt={w.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+                <Link key={w.slug} to="/shop/$slug" params={{ slug: w.slug }} className="group block hover-lift transition-all">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-secondary ring-1 ring-transparent group-hover:ring-2 group-hover:ring-burgundy/60 transition-all">
+                    <img src={w.image} alt={w.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-burgundy-deep/0 group-hover:bg-burgundy-deep/15 transition-colors" />
                     <div className="absolute top-3 left-3 flex flex-col gap-1">
                       {w.tags.map((t) => (
                         <span key={t} className="bg-cream/95 text-burgundy text-[0.6rem] tracking-[0.18em] uppercase px-2 py-0.5">{t}</span>

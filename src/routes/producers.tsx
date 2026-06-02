@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageBanner, SiteLayout } from "@/components/site/SiteLayout";
 import { Leaf, MapPin, Sprout } from "lucide-react";
-import banner from "@/assets/brand/banner-vineyards.jpg";
-import vineyard from "@/assets/brand/vineyard-aerial.jpg";
-import cellar from "@/assets/brand/cellar.jpg";
-import hands from "@/assets/brand/hands-grapes.jpg";
+import banner from "@/assets/brand/estate-aerial.jpg";
+import estateAerial from "@/assets/brand/estate-aerial.jpg";
+import vineyardClose from "@/assets/brand/vineyard-close.jpg";
+import handsGrapes from "@/assets/brand/hands-grapes.jpg";
+import vineyardDining from "@/assets/brand/vineyard-dining.jpg";
+import formalDining from "@/assets/brand/formal-dining.jpg";
+import cellarArch from "@/assets/brand/cellar-arch.jpg";
 
 export const Route = createFileRoute("/producers")({
   head: () => ({
@@ -20,12 +23,12 @@ export const Route = createFileRoute("/producers")({
 });
 
 const regions = [
-  { name: "Valle d'Or", country: "Provence, France", area: "42 ha", soil: "Limestone & clay", flagship: "Cuvée Lumineuse", img: vineyard, story: "The home estate. South-facing amphitheatre at the foot of the Luberon. Biodynamic since 2003." },
-  { name: "Hauts Coteaux", country: "Burgundy, France", area: "6 ha", soil: "Pure limestone", flagship: "Étoile du Matin", img: hands, story: "A single chardonnay vineyard at 380m elevation. Co-farmed with the Verret family since 2014." },
-  { name: "Saint-Émilion satellite", country: "Bordeaux, France", area: "11 ha", soil: "Gravel & clay", flagship: "Le Monarque", img: cellar, story: "Our Bordeaux outpost. 60-year-old Cabernet Sauvignon vines on a south-east slope." },
-  { name: "Loire — Sancerre", country: "Loire Valley, France", area: "Partner", soil: "Flint & chalk", flagship: "Pierre Blanche", img: vineyard, story: "We work with Domaine Margaux, a 4th-generation family pressing Sauvignon Blanc on silex." },
-  { name: "Sauternes", country: "Bordeaux, France", area: "Partner", soil: "Gravel over clay", flagship: "Nectar d'Or", img: hands, story: "A single hand-selected pass through botrytised Sémillon, made with Château Larribeyrie." },
-  { name: "Alsace — Granite", country: "Alsace, France", area: "Partner", soil: "Decomposed granite", flagship: "Aurore", img: cellar, story: "Riesling from the granite massif of Andlau, vinified slow and dry by the Roller family." },
+  { name: "Valle d'Or", country: "Provence, France", area: "42 ha", soil: "Limestone & clay", flagship: "Cuvée Lumineuse", img: estateAerial, story: "The home estate. South-facing amphitheatre at the foot of the Luberon. Biodynamic since 2003." },
+  { name: "Hauts Coteaux", country: "Burgundy, France", area: "6 ha", soil: "Pure limestone", flagship: "Étoile du Matin", img: vineyardClose, story: "A single chardonnay vineyard at 380m elevation. Co-farmed with the Verret family since 2014." },
+  { name: "Saint-Émilion satellite", country: "Bordeaux, France", area: "11 ha", soil: "Gravel & clay", flagship: "Le Monarque", img: cellarArch, story: "Our Bordeaux outpost. 60-year-old Cabernet Sauvignon vines on a south-east slope." },
+  { name: "Loire — Sancerre", country: "Loire Valley, France", area: "Partner", soil: "Flint & chalk", flagship: "Pierre Blanche", img: vineyardDining, story: "We work with Domaine Margaux, a 4th-generation family pressing Sauvignon Blanc on silex." },
+  { name: "Sauternes", country: "Bordeaux, France", area: "Partner", soil: "Gravel over clay", flagship: "Nectar d'Or", img: formalDining, story: "A single hand-selected pass through botrytised Sémillon, made with Château Larribeyrie." },
+  { name: "Alsace — Granite", country: "Alsace, France", area: "Partner", soil: "Decomposed granite", flagship: "Aurore", img: handsGrapes, story: "Riesling from the granite massif of Andlau, vinified slow and dry by the Roller family." },
 ];
 
 function Producers() {
