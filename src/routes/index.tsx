@@ -41,19 +41,21 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative h-screen min-h-[700px] w-full overflow-hidden text-cream -mt-7">
-      <video autoPlay muted loop playsInline poster={vineyard} className="absolute inset-0 h-full w-full object-cover animate-slow-zoom">
+    <section className="relative h-screen min-h-[700px] w-full overflow-hidden text-cream">
+      <video autoPlay muted loop playsInline poster={estateHero} className="absolute inset-0 h-full w-full object-cover animate-slower-zoom">
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
+      {/* Fallback image overlay in case video doesn't load */}
+      <img src={estateHero} alt="" className="absolute inset-0 h-full w-full object-cover -z-10" />
       <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
-      <div className="absolute inset-0 bg-burgundy-deep/30" />
+      <div className="absolute inset-0 bg-burgundy-deep/35" />
       <div className="relative z-10 grid h-full place-items-center text-center px-6">
         <div>
           <p className="eyebrow !text-gold reveal-up">Valle d'Or, France · Est. 1987</p>
-          <h1 className="mt-6 font-serif font-medium text-[clamp(3.5rem,11vw,10rem)] leading-[0.95] reveal-up" style={{ animationDelay: "0.15s" }}>Whinary</h1>
-          <div className="mx-auto mt-6 h-px w-24 bg-gold/70 reveal-up" style={{ animationDelay: "0.3s" }} />
-          <p className="mt-8 font-script italic text-2xl md:text-3xl text-cream/90 reveal-up" style={{ animationDelay: "0.4s" }}>Crafted from the earth. Aged for the ages.</p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal-up" style={{ animationDelay: "0.55s" }}>
+          <h1 className="mt-6 font-serif font-medium text-[clamp(3.5rem,11vw,10rem)] leading-[0.95] reveal-up drop-shadow-2xl" style={{ animationDelay: "0.4s", animationDuration: "1.4s" }}>Whinary</h1>
+          <div className="mx-auto mt-6 h-px w-24 bg-gold/70 reveal-up" style={{ animationDelay: "0.9s", animationDuration: "1.4s" }} />
+          <p className="mt-8 font-script italic text-2xl md:text-3xl text-cream/90 reveal-up drop-shadow-lg" style={{ animationDelay: "1.2s", animationDuration: "1.6s" }}>Crafted from the earth. Aged for the ages.</p>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal-up" style={{ animationDelay: "1.6s", animationDuration: "1.4s" }}>
             <Link to="/shop" className="group inline-flex h-14 items-center gap-3 bg-burgundy px-9 text-[0.78rem] uppercase tracking-[0.25em] font-medium hover:bg-burgundy-deep transition-all hover:gap-5">
               Shop our wines <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -110,7 +112,7 @@ function Storytelling() {
       <div className="container-luxe grid md:grid-cols-12 gap-12 md:gap-20 items-center">
         <div className="md:col-span-7 relative">
           <img src={vineyard} alt="Vineyard at golden hour" loading="lazy" className="w-full shadow-elegant" />
-          <img src={hands} alt="Hands holding grapes" loading="lazy" className="hidden md:block absolute -bottom-16 -right-10 w-64 lg:w-80 shadow-bottle border-8 border-cream" />
+          <img src={vineyardClose} alt="Ripe grapes on the vine" loading="lazy" className="hidden md:block absolute -bottom-16 -right-10 w-64 lg:w-80 shadow-bottle border-8 border-cream object-cover aspect-[4/5]" />
         </div>
         <div className="md:col-span-5">
           <p className="eyebrow">Our Philosophy</p>
@@ -178,7 +180,7 @@ function BestSellers() {
 
 function ExperiencesPreview() {
   const items = [
-    { title: "Cellar Tour", desc: "Walk our 300-year-old chalk caves.", img: bannerCellar, eyebrow: "90 min · €45" },
+    { title: "Cellar Tour", desc: "Walk our 300-year-old chalk caves.", img: cellarArch, eyebrow: "90 min · €45" },
     { title: "Vineyard Tasting", desc: "Five wines paired in the vines.", img: bannerTasting, eyebrow: "2 hours · €85" },
     { title: "Harvest Experience", desc: "Hand-pick grapes at dawn each September.", img: activityHarvest, eyebrow: "Sept · €180" },
   ];
