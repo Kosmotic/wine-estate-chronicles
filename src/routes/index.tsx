@@ -34,6 +34,7 @@ function Home() {
       <StatsStrip />
       <BestSellers />
       <ExperiencesPreview />
+      <MembersTable />
       <Press />
     </SiteLayout>
   );
