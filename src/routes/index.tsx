@@ -5,12 +5,10 @@ import { ArrowRight, Leaf, Award, MapPin } from "lucide-react";
 import estateHero from "@/assets/brand/estate-hero.jpg";
 import vineyard from "@/assets/brand/vineyard-aerial.jpg";
 import vineyardClose from "@/assets/brand/vineyard-close.jpg";
-import hands from "@/assets/brand/hands-grapes.jpg";
 import cellarArch from "@/assets/brand/cellar-arch.jpg";
 import bannerTasting from "@/assets/brand/banner-tasting.jpg";
 import activityHarvest from "@/assets/brand/activity-harvest.jpg";
 import vineyardDining from "@/assets/brand/vineyard-dining.jpg";
-import formalDining from "@/assets/brand/formal-dining.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageBanner, SiteLayout } from "@/components/site/SiteLayout";
-import vineyard from "@/assets/brand/vineyard-aerial.jpg";
-import hands from "@/assets/brand/hands-grapes.jpg";
-import cellar from "@/assets/brand/cellar.jpg";
-import bannerEstate from "@/assets/brand/banner-estate.jpg";
-import bannerVineyards from "@/assets/brand/banner-vineyards.jpg";
+import estateHero from "@/assets/brand/estate-hero.jpg";
+import estateAerial from "@/assets/brand/estate-aerial.jpg";
+import vineyardClose from "@/assets/brand/vineyard-close.jpg";
+import cellarArch from "@/assets/brand/cellar-arch.jpg";
+import vineyardDining from "@/assets/brand/vineyard-dining.jpg";
 import { Leaf, Award, Heart, Sprout } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Three generations of the Lacroix family farming 42 hectares of biodynamic vines in the Valle d'Or, Provence." },
       { property: "og:title", content: "Our Story — Whinary Estate" },
       { property: "og:description", content: "Three generations, one patient hand." },
-      { property: "og:image", content: bannerEstate },
+      { property: "og:image", content: estateHero },
     ],
   }),
   component: About,
@@ -32,11 +32,11 @@ const timeline = [
 function About() {
   return (
     <SiteLayout transparentHeader>
-      <PageBanner eyebrow="Est. 1987 · Valle d'Or, Provence" title="Three generations, one patient hand." subtitle="The story of the Lacroix family and the slow, deliberate art of farming wine." image={bannerEstate} tall />
+      <PageBanner eyebrow="Est. 1987 · Valle d'Or, Provence" title="Three generations, one patient hand." subtitle="The story of the Lacroix family and the slow, deliberate art of farming wine." image={estateHero} tall />
 
       <section className="py-24">
         <div className="container-luxe grid lg:grid-cols-2 gap-16 items-center">
-          <img src={vineyard} alt="Estate" loading="lazy" className="shadow-elegant" />
+          <img src={estateAerial} alt="Estate aerial view" loading="lazy" className="shadow-elegant" />
           <div>
             <p className="eyebrow">The Land</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">42 hectares of limestone and clay.</h2>
@@ -75,7 +75,7 @@ function About() {
 
       <section className="py-24">
         <div className="container-luxe grid lg:grid-cols-2 gap-16 items-center">
-          <div className="lg:order-2"><img src={hands} alt="Hands holding grapes" loading="lazy" className="shadow-elegant" /></div>
+          <div className="lg:order-2"><img src={vineyardClose} alt="Vines with ripe grapes" loading="lazy" className="shadow-elegant aspect-[4/3] object-cover w-full" /></div>
           <div className="lg:order-1">
             <p className="eyebrow">Our Way</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">Farming as if we'll be here forever.</h2>
@@ -116,7 +116,7 @@ function About() {
 
       <section className="py-24">
         <div className="container-luxe grid lg:grid-cols-2 gap-16 items-center">
-          <img src={cellar} alt="Cellar" loading="lazy" className="shadow-elegant" />
+          <img src={cellarArch} alt="Cellar entrance arch" loading="lazy" className="shadow-elegant aspect-[4/5] object-cover w-full" />
           <div>
             <p className="eyebrow">The Cellar</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">Patience in stone and oak.</h2>
@@ -126,7 +126,7 @@ function About() {
       </section>
 
       <section className="relative py-32 overflow-hidden text-cream">
-        <img src={bannerVineyards} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <img src={vineyardDining} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-burgundy-deep/70" />
         <div className="grain absolute inset-0" />
         <div className="container-luxe relative text-center">

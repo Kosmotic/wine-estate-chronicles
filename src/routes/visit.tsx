@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageBanner, SiteLayout } from "@/components/site/SiteLayout";
 import { Calendar, Clock, Users } from "lucide-react";
-import bannerEstate from "@/assets/brand/banner-estate.jpg";
-import bannerCellar from "@/assets/brand/banner-cellar.jpg";
+import vineyardDining from "@/assets/brand/vineyard-dining.jpg";
+import cellarArch from "@/assets/brand/cellar-arch.jpg";
 import activityWalk from "@/assets/brand/activity-walk.jpg";
 import bannerTasting from "@/assets/brand/banner-tasting.jpg";
 import activityHarvest from "@/assets/brand/activity-harvest.jpg";
@@ -16,14 +16,14 @@ export const Route = createFileRoute("/visit")({
       { name: "description", content: "Book a cellar tour, vineyard walk, wine tasting, harvest experience, blending workshop or estate wedding at our Provence estate." },
       { property: "og:title", content: "Visit Whinary Estate" },
       { property: "og:description", content: "Cellar tours, tastings, harvests and weddings in the vines." },
-      { property: "og:image", content: bannerEstate },
+      { property: "og:image", content: vineyardDining },
     ],
   }),
   component: Visit,
 });
 
 const experiences = [
-  { title: "Cellar Tour", desc: "A 90-minute walk through our 300-year-old chalk caves, ending with a tasting straight from the barrel of a wine that isn't bottled yet.", img: bannerCellar, price: 45, duration: "90 min", group: "2 – 10 guests", season: "Year-round" },
+  { title: "Cellar Tour", desc: "A 90-minute walk through our 300-year-old chalk caves, ending with a tasting straight from the barrel of a wine that isn't bottled yet.", img: cellarArch, price: 45, duration: "90 min", group: "2 – 10 guests", season: "Year-round" },
   { title: "Vineyard Walk", desc: "Two hours among the vines with our viticulturist. We stop at the oldest parcel, the biodynamic plot, and the wild flowering margins.", img: activityWalk, price: 35, duration: "2 hours", group: "2 – 14 guests", season: "April – October" },
   { title: "Wine Tasting Lunch", desc: "Five wines paired with estate cheese, Provençal charcuterie and warm bread, served at a long table among the vines at golden hour.", img: bannerTasting, price: 85, duration: "2.5 hours", group: "2 – 20 guests", season: "May – September" },
   { title: "Harvest Experience", desc: "Pick grapes with us at dawn during the September harvest, then a long lunch with the family and an afternoon in the cellar watching the press fill.", img: activityHarvest, price: 180, duration: "Full day", group: "2 – 8 guests", season: "September only" },
@@ -34,7 +34,7 @@ const experiences = [
 function Visit() {
   return (
     <SiteLayout transparentHeader>
-      <PageBanner eyebrow="The Estate" title="Spend a day in Provence with us." subtitle="We open the gates Wednesday through Sunday. Bring a friend, an appetite, and time enough to linger." image={bannerEstate} tall />
+      <PageBanner eyebrow="The Estate" title="Spend a day in Provence with us." subtitle="We open the gates Wednesday through Sunday. Bring a friend, an appetite, and time enough to linger." image={vineyardDining} tall />
 
       <section className="py-24">
         <div className="container-luxe space-y-24">
