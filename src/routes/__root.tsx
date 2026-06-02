@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Lovable App" },
       { name: "twitter:description", content: "Estate Reserve Collective is a luxury wine e-commerce platform offering curated selections, subscriptions, and immersive brand storytelling." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a021d457-506f-4348-8a06-1a0e91fc942a/id-preview-9d185a5d--606c981d-757e-40d7-85e9-de69223fab85.lovable.app-1780403559512.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a021d457-506f-4348-8a06-1a0e91fc942a/id-preview-9d185a5d--606c981d-757e-40d7-85e9-de69223fab85.lovable.app-1780403559512.png" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/884e3d00-a0d6-4fd2-86ca-c286f4f96dc0/id-preview-bc3eda7e--606c981d-757e-40d7-85e9-de69223fab85.lovable.app-1780435628790.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/884e3d00-a0d6-4fd2-86ca-c286f4f96dc0/id-preview-bc3eda7e--606c981d-757e-40d7-85e9-de69223fab85.lovable.app-1780435628790.png" },
     ],
     links: [
       {
