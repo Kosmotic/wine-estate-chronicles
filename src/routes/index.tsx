@@ -215,6 +215,31 @@ function ExperiencesPreview() {
   );
 }
 
+function MembersTable() {
+  return (
+    <section className="relative h-[80vh] min-h-[560px] overflow-hidden text-cream">
+      <img src={vineyardDining} alt="A long table set in the vineyard at golden hour" loading="lazy" className="absolute inset-0 h-full w-full object-cover animate-slower-zoom" />
+      <div className="absolute inset-0 bg-gradient-to-t from-burgundy-deep/85 via-burgundy-deep/40 to-burgundy-deep/30" />
+      <div className="grain absolute inset-0 opacity-40" />
+      <div className="relative z-10 container-luxe h-full flex items-center justify-center">
+        <div className="max-w-2xl text-center reveal-up">
+          <p className="eyebrow !text-gold">The Whinary Wine Club</p>
+          <h2 className="mt-6 font-serif text-5xl md:text-7xl text-balance drop-shadow-2xl">
+            Six wines. Four seasons.
+          </h2>
+          <p className="mt-3 font-script italic text-3xl md:text-5xl text-gold drop-shadow-lg">One unforgettable year.</p>
+          <p className="mt-8 text-cream/85 max-w-xl mx-auto leading-relaxed">
+            Curated quarterly shipments, member-only allocations, and an annual invitation to harvest weekend at the estate.
+          </p>
+          <Link to="/wine-club" className="mt-10 inline-flex items-center gap-3 bg-gradient-gold text-burgundy-deep px-10 py-4 text-[0.72rem] uppercase tracking-[0.25em] font-medium hover:opacity-95 transition">
+            Join the cellar list <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Press() {
   const press = [
     { quote: "Among the most quietly compelling wines coming out of Provence today.", src: "Decanter" },
